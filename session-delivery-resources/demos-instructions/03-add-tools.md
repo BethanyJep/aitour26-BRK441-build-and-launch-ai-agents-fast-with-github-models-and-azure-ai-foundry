@@ -24,7 +24,23 @@ Create the Cora agent in the **Agent Builder** and define it's system prompt.
 1. In the **Add MCP Server to Agent** window, select **Use Tools Added in Visual Studio Code**.
 1. In the pop up, select, **Could not find one? Browse more MCP servers** 
 1. In the new window, select the **Custom** tab then under mcp.json, select the **edit button**, it will open up a new mcp.json file.
-1. Go back to the **.vscode/mcp.json** file, copy the contents then paste to the new mcp.json file.
+1. In the new window, have the code as follows:
+
+``` json
+{
+  "servers": {
+    "zava-customer-sales-stdio": {
+			"type": "stdio",
+			"command": "python",
+			"args": [
+				"/workspace/src/python/mcp_server/customer_sales/customer_sales.py",
+				"--stdio",
+				"--RLS_USER_ID=00000000-0000-0000-0000-000000000000"
+			]
+		}
+  }
+}
+```
 1. Go back to the Agent Builder, under tools select **+ > MCP Server**, you will find **zava-customer-sales-stdio**. Select the tool and it will be successfully added to your agent.
 1. In the **User Prompt** field, enter the prompt: `Here’s a photo of my living room. I’m not sure whether I should go with eggshell or semi-gloss. Can you tell which would work better based on the lighting and layout?`​
 1. Upload the living room photo located at `img/demo-living-room.png`.
